@@ -18,6 +18,7 @@ function generateHex() {
   const colorHex = chroma.random();
   return colorHex;
 }
+// change the lock/unlock icons
 function addLockClass(button, index) {
   colors[index].classList.toggle(`locked`);
   lockButton[index].firstChild.classList.toggle(`fa-lock-open`);
