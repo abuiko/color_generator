@@ -1,7 +1,11 @@
 // global variables and selectors
 const colors = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
+
 const lockButton = document.querySelectorAll(".lock");
+const sliderContainers = document.querySelectorAll(".sliders");
+const adjustButton = document.querySelectorAll(".adjust");
+const closeAdjustment = document.querySelectorAll(".close-adjustment");
 const currentHexes = document.querySelectorAll(".color h2");
 let initialColors;
 // event listeners
@@ -9,6 +13,16 @@ generateBtn.addEventListener("click", randomColors);
 lockButton.forEach((button, index) => {
   button.addEventListener("click", () => {
     addLockClass(button, index);
+  });
+});
+adjustButton.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    openAdjustmentPanel(index);
+  });
+});
+closeAdjustment.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    closeAdjustmentPanel(index);
   });
 });
 // functions
@@ -48,6 +62,14 @@ function checkTextContrast(color, text) {
   } else {
     text.style.color = "#000";
   }
+}
+// Open adjustment panel
+function openAdjustmentPanel(index) {
+  sliderContainers[index].classList.add("active");
+}
+// close adjustment panel
+function closeAdjustmentPanel(index) {
+  sliderContainers[index].classList.remove("active");
 }
 
 randomColors();
