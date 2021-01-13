@@ -106,7 +106,7 @@ body {
 }
 
 .controls button:not(:last-child) {
-  margin-bottom: 1.875rem;
+  margin-bottom: 2rem;
 }
 
 .sliders {

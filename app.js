@@ -1,46 +1,33 @@
-// global variables and selectors
-const colors = document.querySelectorAll(".color");
-const generateBtn = document.querySelector(".generate");
+function init() {
+  const generateBtn = document.querySelector(".generate");
+  generateBtn.addEventListener("click", randomColors);
 
-const lockButton = document.querySelectorAll(".lock");
-const sliderContainers = document.querySelectorAll(".sliders");
-const adjustButton = document.querySelectorAll(".adjust");
-const closeAdjustment = document.querySelectorAll(".close-adjustment");
-const currentHexes = document.querySelectorAll(".color h2");
-let initialColors;
-// event listeners
-generateBtn.addEventListener("click", randomColors);
-lockButton.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    addLockClass(button, index);
-  });
-});
-adjustButton.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    openAdjustmentPanel(index);
-  });
-});
-closeAdjustment.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    closeAdjustmentPanel(index);
-  });
-});
-// functions
+  const colors = document.querySelectorAll(".color");
+  colors.forEach((color) => {
+    const lockButton = color.querySelector(".lock");
+    lockButton.addEventListener("click", () => {
+      color.classList.toggle("locked");
+      lockButton.firstChild.classList.toggle("fa-lock-open");
+      lockButton.firstChild.classList.toggle("fa-lock");
+    });
 
-// generate random color
-function generateHex() {
-  const colorHex = chroma.random();
-  return colorHex;
-}
-// change the lock/unlock icons
-function addLockClass(button, index) {
-  colors[index].classList.toggle(`locked`);
-  lockButton[index].firstChild.classList.toggle(`fa-lock-open`);
-  lockButton[index].firstChild.classList.toggle(`fa-lock`);
+    const sliderContainer = color.querySelector(".sliders");
+    const closeAdjust = sliderContainer.querySelector(".close-adjustment");
+    closeAdjust.addEventListener("click", () => {
+      sliderContainer.classList.remove("active");
+    });
+
+    const adjustButton = color.querySelector(".adjust");
+    adjustButton.addEventListener("click", () => {
+      sliderContainer.classList.add("active");
+    });
+  });
 }
 
 // apply random color/hex to the color div
 function randomColors() {
+  const colors = document.querySelectorAll(".color");
+
   colors.forEach((color, index) => {
     if (color.classList.contains("locked")) {
       return;
@@ -54,6 +41,11 @@ function randomColors() {
   });
 }
 
+function generateHex() {
+  const colorHex = chroma.random();
+  return colorHex;
+}
+
 // check the contrast
 function checkTextContrast(color, text) {
   const luminance = chroma(color).luminance();
@@ -63,13 +55,7 @@ function checkTextContrast(color, text) {
     text.style.color = "#000";
   }
 }
-// Open adjustment panel
-function openAdjustmentPanel(index) {
-  sliderContainers[index].classList.add("active");
-}
-// close adjustment panel
-function closeAdjustmentPanel(index) {
-  sliderContainers[index].classList.remove("active");
-}
+
+init();
 
 randomColors();
