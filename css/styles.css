@@ -176,6 +176,7 @@ input[type="range"] {
   pointer-events: none;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+  opacity: 0;
 }
 
 .copy-container .copy-popup {
@@ -204,5 +205,10 @@ input[type="range"] {
 .copy-container .copy-popup h3 {
   color: #000;
   margin-bottom: 1.875rem;
+}
+
+.copy-container.active {
+  opacity: 1;
+  pointer-events: all;
 }
 /*# sourceMappingURL=styles.css.map */
