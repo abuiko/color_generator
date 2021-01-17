@@ -27,6 +27,9 @@ function init() {
 // new code starts ============================================
 const currentHexes = document.querySelectorAll(".color h2");
 const popup = document.querySelector(".copy-container");
+const libraryContainer = document.querySelector(".library-container");
+const libraryBtn = document.querySelector(".library");
+const closeLibraryBtn = document.querySelector(".close-library");
 
 currentHexes.forEach((hex) => {
   hex.addEventListener("click", () => {
@@ -39,6 +42,8 @@ popup.addEventListener("transitionend", () => {
   popup.classList.remove("active");
   popupBox.classList.remove("active");
 });
+libraryBtn.addEventListener("click", openLibrary);
+closeLibraryBtn.addEventListener("click", closeLibrary);
 
 function copyToClipboard(hex) {
   const el = document.createElement("textarea");
@@ -52,7 +57,16 @@ function copyToClipboard(hex) {
   popup.classList.add("active");
   popupBox.classList.add("active");
 }
-
+function openLibrary() {
+  const popup = libraryContainer.children[0];
+  libraryContainer.classList.add("active");
+  popup.classList.add("active");
+}
+function closeLibrary() {
+  const popup = libraryContainer.children[0];
+  libraryContainer.classList.remove("active");
+  popup.classList.remove("active");
+}
 // new code ends ===================================================
 
 // apply random color/hex to the color div

@@ -157,7 +157,8 @@ input[type="range"] {
   color: white;
 }
 
-.copy-container {
+.copy-container,
+.library-container {
   position: fixed;
   top: 0%;
   left: 0%;
@@ -179,7 +180,10 @@ input[type="range"] {
   opacity: 0;
 }
 
-.copy-container .copy-popup {
+.copy-container .copy-popup,
+.copy-container .library-popup,
+.library-container .copy-popup,
+.library-container .library-popup {
   background: #fff;
   width: 25rem;
   height: 12.5rem;
@@ -202,13 +206,58 @@ input[type="range"] {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 
-.copy-container .copy-popup h3 {
+.copy-container .copy-popup h3,
+.copy-container .library-popup h3,
+.library-container .copy-popup h3,
+.library-container .library-popup h3 {
   color: #000;
   margin-bottom: 1.875rem;
 }
 
-.copy-container.active {
+.copy-container .library-popup,
+.library-container .library-popup {
+  background: #363636;
+  color: white;
+}
+
+.copy-container .library-popup h4,
+.library-container .library-popup h4 {
+  font-size: 1.3rem;
+}
+
+.copy-container.active,
+.library-container.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.copy-popup.active,
+.library-popup.active {
+  -webkit-transform: translateY(0rem);
+          transform: translateY(0rem);
+}
+
+.library-popup {
+  min-width: 40%;
+  padding: 1rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
+.close-library {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.7rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: none;
+  background: #494949;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
 /*# sourceMappingURL=styles.css.map */
