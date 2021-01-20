@@ -1,5 +1,5 @@
 function init() {
-    // generate colors on click
+    // generate colors on click of generate button
     const generateBtn = document.querySelector(".generate-btn");
     generateBtn.addEventListener("click", randomColors);
 
@@ -60,7 +60,10 @@ function init() {
             sliderContainer.classList.remove("active");
         });
 
-
+        // const sliders = document.querySelectorAll('input[type="range"]');
+        // sliders.forEach(slider => {
+        //     slider.addEventListener("input", hslControls);
+        // });
 
 
     });
@@ -78,6 +81,11 @@ function closeLibrary() {
     const popup = libraryContainer.children[0];
     libraryContainer.classList.remove("active");
     popup.classList.remove("active");
+}
+
+function generateHex() {
+    const colorHex = chroma.random();
+    return colorHex;
 }
 
 // apply random color/hex to the color div
@@ -108,6 +116,39 @@ function randomColors() {
     });
 }
 
+// new code starts
+// let initialColors;
+// const sliders = document.querySelectorAll('input[type="range"]');
+// sliders.forEach(slider => {
+//     slider.addEventListener("input", hslControls);
+// });
+
+
+
+
+// function hslControls(e) {
+//     const colors = document.querySelectorAll(".color");
+//     const index =
+//         e.target.getAttribute("data-bright") ||
+//         e.target.getAttribute("data-sat") ||
+//         e.target.getAttribute("data-hue");
+
+//     let sliders = e.target.parentElement.querySelectorAll('input[type="range"]');
+//     const hue = sliders[0];
+//     const brightness = sliders[1];
+//     const saturation = sliders[2];
+
+//     const bgColor = initialColors[index];
+
+//     let color = chroma(bgColor)
+//         .set("hsl.s", saturation.value)
+//         .set("hsl.l", brightness.value)
+//         .set("hsl.h", hue.value);
+
+//     colors[index].style.backgroundColor = color;
+//     // colorize inputs
+//     colorizeSliders(color, hue, brightness, saturation);
+// }
 
 function colorizeSliders(colorDiv, hue, brightness, saturation) {
     // scale saturation
@@ -129,12 +170,6 @@ function colorizeSliders(colorDiv, hue, brightness, saturation) {
   )}, ${scaleBright(0.5)},${scaleBright(1)})`;
 
     hue.style.backgroundImage = `linear-gradient(to right, rgb(255, 0, 0), rgb(255,255 ,0),rgb(0, 255, 0),rgb(0, 255, 255),rgb(0,0,255),rgb(255,0,255),rgb(255,0,0))`;
-}
-// new code ends
-
-function generateHex() {
-    const colorHex = chroma.random();
-    return colorHex;
 }
 
 // check the contrast

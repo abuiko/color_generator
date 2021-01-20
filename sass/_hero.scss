@@ -1,11 +1,22 @@
 .colors {
   min-height: 80vh;
 
+  @include breakpoint-down(medium) {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+  }
+
+
   .color {
     flex: 1;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+
+    @include breakpoint-down(medium) {
+      flex-direction: row;
+    }
 
     .hex-line {
       cursor: pointer;
@@ -17,9 +28,26 @@
   display: flex;
   flex-direction: column;
 
-  button:not(:last-child) {
-    margin-bottom: 2rem;
+  @include breakpoint-down(medium) {
+    flex-direction: row;
+
   }
+
+  .lock {
+    margin-bottom: 2rem;
+
+    @include breakpoint-down(medium) {
+      margin: 2rem;
+    }
+  }
+
+  .adjust {
+    @include breakpoint-down(medium) {
+      margin: 2rem;
+    }
+  }
+
+
 }
 
 // sliders
@@ -36,9 +64,25 @@
   transform: translateY(calc(100% + 0.3125rem));
   transition: all 300ms ease-in-out;
 
+  @include breakpoint-down(medium) {
+    width: 95%;
+    padding: 2rem;
+    flex-direction: row;
+    bottom: 2.4rem;
+    transform: translateY(calc(100% + 2.4rem));
+
+  }
+
   span {
     color: $white;
     margin-bottom: 0.625rem;
+
+    @include breakpoint-down(medium) {
+      margin-bottom: 0;
+
+    }
+
+
   }
 }
 
@@ -52,6 +96,11 @@ input[type=range] {
   margin: 0 0 1.25rem 0;
   width: 100%;
   border-radius: 1rem;
+
+  @include breakpoint-down(medium) {
+    margin: 0 1rem;
+
+  }
 
 
 
@@ -108,8 +157,23 @@ input[type=range]::-ms-thumb {
   min-height: 20vh;
   text-align: center;
 
+  @include breakpoint-down(medium) {
+    min-height: 15vh;
+  }
+
   h3 {
     margin-bottom: 0;
     color: $white;
+
+    @include breakpoint-down(medium) {
+      font-size: 1rem;
+    }
+  }
+
+  i {
+
+    @include breakpoint-down(medium) {
+      font-size: 1.5rem;
+    }
   }
 }
