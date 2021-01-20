@@ -1,23 +1,29 @@
 function init() {
+    // generate colors on click
     const generateBtn = document.querySelector(".generate-btn");
     generateBtn.addEventListener("click", randomColors);
 
+    // open library button
     const libraryBtn = document.querySelector(".library-btn");
     libraryBtn.addEventListener("click", openLibrary);
 
+    // close library button
     const closeLibraryBtn = document.querySelector(".close-library");
     closeLibraryBtn.addEventListener("click", closeLibrary);
 
+    // remove copy notification on transition end
     const copyNote = document.querySelector(".copy-container");
     const copyPopup = copyNote.querySelector(".copy-popup");
     copyNote.addEventListener('transitionend', () => {
-
         copyPopup.classList.remove("active");
         copyNote.classList.remove("active");
     });
 
+    // loop through color divs
     const colors = document.querySelectorAll(".color");
     colors.forEach((color) => {
+
+        // copy hexes on click
         const currentHex = color.querySelector(".hex-line");
         currentHex.addEventListener("click", () => {
             const el = document.createElement("textarea");
@@ -27,11 +33,12 @@ function init() {
             document.execCommand("copy");
             document.body.removeChild(el);
 
+            //add copy notification box 
             copyPopup.classList.add("active");
             copyNote.classList.add("active");
-            // copyToClipboard(currentHex.innerHTML);
         });
 
+        // lock/unlock color when click lock button
         const lockButton = color.querySelector(".lock");
         lockButton.addEventListener("click", () => {
             color.classList.toggle("locked");
@@ -40,16 +47,20 @@ function init() {
             icon.classList.toggle("fa-lock");
         });
 
+        // add adjust popup box when click adjust button
+        const adjustButton = color.querySelector(".adjust");
+        adjustButton.addEventListener("click", () => {
+            sliderContainer.classList.add("active");
+        });
+
+        // remove adjust popup box when click close-adjustment button
         const sliderContainer = color.querySelector(".sliders");
         const closeAdjust = sliderContainer.querySelector(".close-adjustment");
         closeAdjust.addEventListener("click", () => {
             sliderContainer.classList.remove("active");
         });
 
-        const adjustButton = color.querySelector(".adjust");
-        adjustButton.addEventListener("click", () => {
-            sliderContainer.classList.add("active");
-        });
+
 
 
     });
@@ -84,7 +95,7 @@ function randomColors() {
         hexText.innerText = randomColor;
         checkTextContrast(randomColor, hexText);
 
-        // new code starts
+
         const colorDiv = chroma(randomColor);
         const sliders = color.querySelectorAll(".sliders input");
         const hue = sliders[0];
@@ -93,11 +104,11 @@ function randomColors() {
 
         colorizeSliders(colorDiv, hue, brightness, saturation);
 
-        // new code ends
+
     });
 }
 
-// new code starts
+
 function colorizeSliders(colorDiv, hue, brightness, saturation) {
     // scale saturation
     const noSat = colorDiv.set("hsl.s", 0);
