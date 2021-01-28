@@ -25,6 +25,10 @@
         transform: translateY(-2rem);
         transition: transform 0.5s ease;
 
+        @include breakpoint-down(small) {
+            width: 90%;
+        }
+
         h3 {
             color: #000;
             margin-bottom: 1.875rem;

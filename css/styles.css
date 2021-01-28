@@ -117,6 +117,12 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 39.9375em) {
+  .colors .color .hex-line {
+    font-size: 1.1rem;
+  }
+}
+
 .controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -146,9 +152,23 @@ body {
   }
 }
 
+@media (max-width: 39.9375em) {
+  .controls .lock {
+    margin: 0.5rem;
+    font-size: 0.5rem;
+  }
+}
+
 @media (max-width: 63.9375em) {
   .controls .adjust {
     margin: 2rem;
+  }
+}
+
+@media (max-width: 39.9375em) {
+  .controls .adjust {
+    margin: 0.5rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -184,6 +204,19 @@ body {
   }
 }
 
+@media (max-width: 39.9375em) {
+  .sliders {
+    width: 50%;
+    padding: 1rem 0.5rem;
+    right: 0.5rem;
+    bottom: 4%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .sliders span {
   color: white;
   margin-bottom: 0.625rem;
@@ -192,6 +225,12 @@ body {
 @media (max-width: 63.9375em) {
   .sliders span {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 39.9375em) {
+  .sliders span {
+    display: none;
   }
 }
 
@@ -214,6 +253,13 @@ input[type=range] {
   }
 }
 
+@media (max-width: 39.9375em) {
+  input[type=range] {
+    margin: 0.3rem 1rem;
+    width: 80%;
+  }
+}
+
 input [type=range]:focus {
   outline: none;
 }
@@ -233,6 +279,13 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
+@media (max-width: 39.9375em) {
+  input[type=range]::-webkit-slider-thumb {
+    height: 15px;
+    width: 15px;
+  }
+}
+
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
   border: 1px solid white;
@@ -241,6 +294,13 @@ input[type=range]::-moz-range-thumb {
   border-radius: 10px;
   background: #5a5a5a;
   cursor: pointer;
+}
+
+@media (max-width: 39.9375em) {
+  input[type=range]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+  }
 }
 
 /* All the same stuff for IE */
@@ -252,6 +312,13 @@ input[type=range]::-ms-thumb {
   border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
+}
+
+@media (max-width: 39.9375em) {
+  input[type=range]::-ms-thumb {
+    height: 15px;
+    width: 15px;
+  }
 }
 
 /* panels (library, generate, save) */
@@ -278,9 +345,26 @@ input[type=range]::-ms-thumb {
   }
 }
 
+@media (max-width: 39.9375em) {
+  .panels h3 {
+    display: none;
+  }
+}
+
+.panels button {
+  -webkit-box-shadow: 4px 4px 20px #2e2e2e;
+          box-shadow: 4px 4px 20px #2e2e2e;
+}
+
 @media (max-width: 63.9375em) {
   .panels i {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 39.9375em) {
+  .panels i {
+    font-size: 1.3rem;
   }
 }
 
@@ -331,6 +415,15 @@ input[type=range]::-ms-thumb {
   transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+@media (max-width: 39.9375em) {
+  .copy-container .copy-popup,
+  .copy-container .library-popup,
+  .library-container .copy-popup,
+  .library-container .library-popup {
+    width: 90%;
+  }
 }
 
 .copy-container .copy-popup h3,
