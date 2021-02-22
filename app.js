@@ -19,6 +19,11 @@ function init() {
         copyNote.classList.remove("active");
     });
 
+    const sliders = document.querySelectorAll('input[type="range"]');
+    sliders.forEach(slider => {
+        slider.addEventListener("input", hslControls);
+    });
+
     // loop through color divs
     const colors = document.querySelectorAll(".color");
     colors.forEach((color) => {
@@ -60,10 +65,6 @@ function init() {
             sliderContainer.classList.remove("active");
         });
 
-        // const sliders = document.querySelectorAll('input[type="range"]');
-        // sliders.forEach(slider => {
-        //     slider.addEventListener("input", hslControls);
-        // });
 
 
     });
@@ -116,39 +117,28 @@ function randomColors() {
     });
 }
 
-// new code starts
-// let initialColors;
-// const sliders = document.querySelectorAll('input[type="range"]');
-// sliders.forEach(slider => {
-//     slider.addEventListener("input", hslControls);
-// });
 
+// change bgcolor when change input color
+function hslControls(e) {
 
+    const slider = e.target.parentElement;
 
+    const bright = slider.querySelector('.bright-input');
+    const hue = slider.querySelector('.hue-input');
+    const sat = slider.querySelector('.sat-input');
 
-// function hslControls(e) {
-//     const colors = document.querySelectorAll(".color");
-//     const index =
-//         e.target.getAttribute("data-bright") ||
-//         e.target.getAttribute("data-sat") ||
-//         e.target.getAttribute("data-hue");
+    let bgColor = slider.parentElement.style.backgroundColor;
 
-//     let sliders = e.target.parentElement.querySelectorAll('input[type="range"]');
-//     const hue = sliders[0];
-//     const brightness = sliders[1];
-//     const saturation = sliders[2];
+    let color = chroma(bgColor)
+        .set("hsl.s", sat.value)
+        .set("hsl.l", bright.value)
+        .set("hsl.h", hue.value);
 
-//     const bgColor = initialColors[index];
+    slider.parentElement.style.backgroundColor = color;
 
-//     let color = chroma(bgColor)
-//         .set("hsl.s", saturation.value)
-//         .set("hsl.l", brightness.value)
-//         .set("hsl.h", hue.value);
+    colorizeSliders(color, hue, bright, sat);
 
-//     colors[index].style.backgroundColor = color;
-//     // colorize inputs
-//     colorizeSliders(color, hue, brightness, saturation);
-// }
+}
 
 function colorizeSliders(colorDiv, hue, brightness, saturation) {
     // scale saturation
