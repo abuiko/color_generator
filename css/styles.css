@@ -504,6 +504,7 @@ input[type=range]::-ms-thumb {
   border: none;
   background: #494949;
   color: white;
+  cursor: pointer;
 }
 
 .copy-container.active,

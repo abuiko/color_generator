@@ -11,6 +11,14 @@ function init() {
     const closeLibraryBtn = document.querySelector(".close-library");
     closeLibraryBtn.addEventListener("click", closeLibrary);
 
+    // save button
+    const saveBtn = document.querySelector(".save");
+    saveBtn.addEventListener('click', openSave);
+
+    // close save container
+    const closeSaveBtn = document.querySelector('.close-save');
+    closeSaveBtn.addEventListener('click', closeSave);
+
     // remove copy notification on transition end
     const copyNote = document.querySelector(".copy-container");
     const copyPopup = copyNote.querySelector(".copy-popup");
@@ -82,6 +90,22 @@ function closeLibrary() {
     const popup = libraryContainer.children[0];
     libraryContainer.classList.remove("active");
     popup.classList.remove("active");
+}
+
+
+function openSave() {
+    const saveContainer = document.querySelector('.save-container');
+    const savePopup = document.querySelector('.save-popup');
+    saveContainer.classList.add('active');
+    savePopup.classList.add('active');
+}
+
+function closeSave() {
+    const saveContainer = document.querySelector('.save-container');
+    const savePopup = document.querySelector('.save-popup');
+    saveContainer.classList.remove('active');
+    savePopup.classList.remove('active');
+
 }
 
 function generateHex() {
@@ -207,9 +231,9 @@ randomColors();
 
 // implement Save tp paletes and local storage stuff
 
-const saveBtn = document.querySelector(".save");
+
 const submitSave = document.querySelector(".submit-save");
-const closeSave = document.querySelector(".close-save");
+
 // const saveContainer = document.querySelector(".save-container");
 // const saveInput = document.querySelector(".save-container input");
 
