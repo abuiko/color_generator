@@ -1,5 +1,6 @@
 .copy-container,
-.library-container {
+.library-container,
+.save-container {
     position: fixed;
     top: 0%;
     left: 0%;
@@ -37,23 +38,98 @@
 
     .library-popup {
         background: #363636;
-        color: white;
 
-        h4 {
+
+        h3 {
             font-size: 1.3rem;
+            color: white;
         }
     }
 }
 
+
+
+.save-popup {
+
+    min-width: 70%;
+    padding: 3rem 4rem;
+    border-radius: 1rem;
+    position: absolute;
+    background: #363636;
+
+    h3 {
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+    }
+
+    input,
+    .submit-save {
+        display: inline-block;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+        border-radius: 5px;
+        border: none;
+    }
+
+    input {
+        width: 60%;
+        padding-left: 1rem;
+    }
+
+    .submit-save {
+        background: rgb(110, 110, 110);
+        color: #fff;
+        cursor: pointer;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-weight: bold;
+
+        &:hover {
+            background: rgb(32, 32, 32);
+        }
+    }
+
+    .close-save {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.7rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border: none;
+        background: rgb(73, 73, 73);
+        color: white;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .copy-container.active,
-.library-container.active {
+.library-container.active,
+.save-container.active {
     opacity: 1;
     pointer-events: all;
 
 }
 
 .copy-popup.active,
-.library-popup.active {
+.library-popup.active,
+.save-container.active {
     transform: translateY(0rem);
 }
 

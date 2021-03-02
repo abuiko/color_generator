@@ -369,7 +369,8 @@ input[type=range]::-ms-thumb {
 }
 
 .copy-container,
-.library-container {
+.library-container,
+.save-container {
   position: fixed;
   top: 0%;
   left: 0%;
@@ -394,7 +395,9 @@ input[type=range]::-ms-thumb {
 .copy-container .copy-popup,
 .copy-container .library-popup,
 .library-container .copy-popup,
-.library-container .library-popup {
+.library-container .library-popup,
+.save-container .copy-popup,
+.save-container .library-popup {
   background: #fff;
   width: 25rem;
   height: 12.5rem;
@@ -421,7 +424,9 @@ input[type=range]::-ms-thumb {
   .copy-container .copy-popup,
   .copy-container .library-popup,
   .library-container .copy-popup,
-  .library-container .library-popup {
+  .library-container .library-popup,
+  .save-container .copy-popup,
+  .save-container .library-popup {
     width: 90%;
   }
 }
@@ -429,30 +434,88 @@ input[type=range]::-ms-thumb {
 .copy-container .copy-popup h3,
 .copy-container .library-popup h3,
 .library-container .copy-popup h3,
-.library-container .library-popup h3 {
+.library-container .library-popup h3,
+.save-container .copy-popup h3,
+.save-container .library-popup h3 {
   color: #000;
   margin-bottom: 1.875rem;
 }
 
 .copy-container .library-popup,
-.library-container .library-popup {
+.library-container .library-popup,
+.save-container .library-popup {
   background: #363636;
+}
+
+.copy-container .library-popup h3,
+.library-container .library-popup h3,
+.save-container .library-popup h3 {
+  font-size: 1.3rem;
   color: white;
 }
 
-.copy-container .library-popup h4,
-.library-container .library-popup h4 {
-  font-size: 1.3rem;
+.save-popup {
+  min-width: 70%;
+  padding: 3rem 4rem;
+  border-radius: 1rem;
+  position: absolute;
+  background: #363636;
+}
+
+.save-popup h3 {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.save-popup input,
+.save-popup .submit-save {
+  display: inline-block;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.save-popup input {
+  width: 60%;
+  padding-left: 1rem;
+}
+
+.save-popup .submit-save {
+  background: #6e6e6e;
+  color: #fff;
+  cursor: pointer;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-weight: bold;
+}
+
+.save-popup .submit-save:hover {
+  background: #202020;
+}
+
+.save-popup .close-save {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.7rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: none;
+  background: #494949;
+  color: white;
 }
 
 .copy-container.active,
-.library-container.active {
+.library-container.active,
+.save-container.active {
   opacity: 1;
   pointer-events: all;
 }
 
 .copy-popup.active,
-.library-popup.active {
+.library-popup.active,
+.save-container.active {
   -webkit-transform: translateY(0rem);
           transform: translateY(0rem);
 }

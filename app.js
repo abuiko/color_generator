@@ -175,3 +175,166 @@ function checkTextContrast(color, text) {
 init();
 
 randomColors();
+
+
+
+// function updateTextUI(index) {
+//     const activeDiv = colorDivs[index];
+//     const color = chroma(activeDiv.style.backgroundColor);
+//     const textHex = activeDiv.querySelector("h2");
+//     const icons = activeDiv.querySelectorAll(".controls button");
+//     textHex.innerText = color.hex();
+//     //   check contrast
+//     checkTextContrast(color, textHex);
+//     for (icon of icons) {
+//       checkTextContrast(color, icon);
+//     }
+//   }
+//   function resetInputs() {
+//     colorDivs.forEach((div, i) => {
+//       const color = initialColors[i],
+//         hueValue = chroma(color).hsl()[0],
+//         satValue = chroma(color).hsl()[1],
+//         brightValue = chroma(color).hsl()[2];
+//       sliders[0 + 3 * i].value = Math.floor(hueValue);
+//       sliders[1 + 3 * i].value = Math.floor(brightValue * 100) / 100;
+//       sliders[2 + 3 * i].value = Math.floor(satValue * 100) / 100;
+//     });
+//   }
+
+
+
+
+// implement Save tp paletes and local storage stuff
+
+const saveBtn = document.querySelector(".save");
+const submitSave = document.querySelector(".submit-save");
+const closeSave = document.querySelector(".close-save");
+// const saveContainer = document.querySelector(".save-container");
+// const saveInput = document.querySelector(".save-container input");
+
+
+// // event listeners
+// saveBtn.addEventListener("click", openPalette);
+// closeSave.addEventListener("click", closePalette);
+// submitSave.addEventListener("click", savePalette);
+
+
+// function openPalette(e) {
+//   const popup = saveContainer.children[0];
+//   saveContainer.classList.add("active");
+//   popup.classList.add("active");
+// }
+// function closePalette(e) {
+//   const popup = saveContainer.children[0];
+//   saveContainer.classList.remove("active");
+//   popup.classList.remove("active");
+// }
+// function savePalette(e) {
+//   saveContainer.classList.remove("active");
+//   popup.classList.remove("active");
+//   const name = saveInput.value;
+//   const colors = [];
+//   currentHexes.forEach(hex => {
+//     colors.push(hex.innerText);
+//   });
+//   // generate object
+//   let paletteNr = savedPalettes.length;
+//   const paletteObj = { name, colors, nr: paletteNr };
+//   savedPalettes.push(paletteObj);
+//   // save to local storage
+//   saveToLocal(paletteObj);
+//   saveInput.value = "";
+//   // generate palette for library
+//   const palette = document.createElement("div");
+//   palette.classList.add("custom-palette");
+//   const title = document.createElement("h4");
+//   title.innerText = paletteObj.name;
+//   const preview = document.createElement("div");
+//   preview.classList.add("small-preview");
+//   paletteObj.colors.forEach(smallColor => {
+//     const smallDiv = document.createElement("div");
+//     smallDiv.style.backgroundColor = smallColor;
+//     preview.appendChild(smallDiv);
+//   });
+//   const paletteBtn = document.createElement("button");
+//   paletteBtn.classList.add("pick-palette-btn");
+//   paletteBtn.classList.add(paletteObj.nr);
+//   paletteBtn.innerText = "Select";
+//   // attach events to the button
+//   paletteBtn.addEventListener("click", e => {
+//     closeLibrary();
+//     const paletteIndex = e.target.classList[1];
+//     initialColors = [];
+//     savedPalettes[paletteIndex].colors.forEach((color, index) => {
+//       initialColors.push(color);
+//       colorDivs[index].style.backgroundColor = color;
+//       const text = colorDivs[index].children[0];
+//       checkTextContrast(color, text);
+//       updateTextUI(index);
+//     });
+//     resetInputs();
+//   });
+//   // append to library
+//   palette.appendChild(title);
+//   palette.appendChild(preview);
+//   palette.appendChild(paletteBtn);
+//   libraryContainer.children[0].appendChild(palette);
+// }
+// function saveToLocal(paletteObj) {
+//   let localPalettes;
+//   if (localStorage.getItem("palettes") === null) {
+//     localPalettes = [];
+//   } else {
+//     localPalettes = JSON.parse(localStorage.getItem("palettes"));
+//   }
+//   localPalettes.push(paletteObj);
+//   localStorage.setItem("palettes", JSON.stringify(localPalettes));
+// }
+
+// function getLocal() {
+//   if (localStorage.getItem("palettes") === null) {
+//     localPalette = [];
+//   } else {
+//     const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+//     paletteObjects.forEach(paletteObj => {
+//       // generate palette for library
+//       const palette = document.createElement("div");
+//       palette.classList.add("custom-palette");
+//       const title = document.createElement("h4");
+//       title.innerText = paletteObj.name;
+//       const preview = document.createElement("div");
+//       preview.classList.add("small-preview");
+//       paletteObj.colors.forEach(smallColor => {
+//         const smallDiv = document.createElement("div");
+//         smallDiv.style.backgroundColor = smallColor;
+//         preview.appendChild(smallDiv);
+//       });
+//       const paletteBtn = document.createElement("button");
+//       paletteBtn.classList.add("pick-palette-btn");
+//       paletteBtn.classList.add(paletteObj.nr);
+//       paletteBtn.innerText = "Select";
+//       // attach events to the button
+//       paletteBtn.addEventListener("click", e => {
+//         closeLibrary();
+//         const paletteIndex = e.target.classList[1];
+//         initialColors = [];
+//         paletteObjects[paletteIndex].colors.forEach((color, index) => {
+//           initialColors.push(color);
+//           colorDivs[index].style.backgroundColor = color;
+//           const text = colorDivs[index].children[0];
+//           checkTextContrast(color, text);
+//           updateTextUI(index);
+//         });
+//         resetInputs();
+//       });
+//       // append to library
+//       palette.appendChild(title);
+//       palette.appendChild(preview);
+//       palette.appendChild(paletteBtn);
+//       libraryContainer.children[0].appendChild(palette);
+//     });
+//   }
+// }
+
+// getLocal();
