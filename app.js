@@ -19,6 +19,10 @@ function init() {
     const closeSaveBtn = document.querySelector('.close-save');
     closeSaveBtn.addEventListener('click', closeSave);
 
+    // save palette button
+    const submitSave = document.querySelector(".submit-save");
+    submitSave.addEventListener("click", savePalette);
+
     // remove copy notification on transition end
     const copyNote = document.querySelector(".copy-container");
     const copyPopup = copyNote.querySelector(".copy-popup");
@@ -196,6 +200,27 @@ function checkTextContrast(color, text) {
     }
 }
 
+// let savedPalettes = [];
+function savePalette() {
+
+    const saveContainer = document.querySelector(".save-container");
+    const savePopup = document.querySelector('.save-popup');
+    const saveInput = document.querySelector(".save-container input");
+
+
+    saveContainer.classList.remove("active");
+    savePopup.classList.remove("active");
+    const name = saveInput.value;
+    const colors = [];
+    const currentHexes = document.querySelectorAll('.hex-line');
+    currentHexes.forEach(hex => {
+        colors.push(hex.innerText);
+    });
+    console.log(colors);
+    console.log(name);
+
+}
+
 init();
 
 randomColors();
@@ -232,36 +257,7 @@ randomColors();
 // implement Save tp paletes and local storage stuff
 
 
-const submitSave = document.querySelector(".submit-save");
 
-// const saveContainer = document.querySelector(".save-container");
-// const saveInput = document.querySelector(".save-container input");
-
-
-// // event listeners
-// saveBtn.addEventListener("click", openPalette);
-// closeSave.addEventListener("click", closePalette);
-// submitSave.addEventListener("click", savePalette);
-
-
-// function openPalette(e) {
-//   const popup = saveContainer.children[0];
-//   saveContainer.classList.add("active");
-//   popup.classList.add("active");
-// }
-// function closePalette(e) {
-//   const popup = saveContainer.children[0];
-//   saveContainer.classList.remove("active");
-//   popup.classList.remove("active");
-// }
-// function savePalette(e) {
-//   saveContainer.classList.remove("active");
-//   popup.classList.remove("active");
-//   const name = saveInput.value;
-//   const colors = [];
-//   currentHexes.forEach(hex => {
-//     colors.push(hex.innerText);
-//   });
 //   // generate object
 //   let paletteNr = savedPalettes.length;
 //   const paletteObj = { name, colors, nr: paletteNr };
