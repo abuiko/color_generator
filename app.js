@@ -237,6 +237,7 @@ function savePalette() {
     title.innerText = paletteObj.name;
     const preview = document.createElement("div");
     preview.classList.add("small-preview");
+
     paletteObj.colors.forEach(smallColor => {
         const smallDiv = document.createElement("div");
         smallDiv.style.backgroundColor = smallColor;
@@ -261,7 +262,15 @@ function savePalette() {
     deleteBtn.classList.add('fa-trash-alt');
     deleteBtn.appendChild(deleteIcon);
 
-    // attach events to the button
+    // append to library
+    palette.appendChild(title);
+    palette.appendChild(preview);
+    palette.appendChild(selectBtn);
+    palette.appendChild(deleteBtn);
+    const libraryPopup = document.querySelector('.library-popup');
+    libraryPopup.appendChild(palette);
+
+    // select button functionality
     selectBtn.addEventListener("click", e => {
         closeLibrary();
         const paletteIndex = e.target.classList[1];
@@ -277,13 +286,12 @@ function savePalette() {
         resetInputs();
     });
 
-    // append to library
-    palette.appendChild(title);
-    palette.appendChild(preview);
-    palette.appendChild(selectBtn);
-    palette.appendChild(deleteBtn);
-    const libraryPopup = document.querySelector('.library-popup');
-    libraryPopup.appendChild(palette);
+    // delete button functionality
+    deleteBtn.addEventListener('click', e => {
+        closeLibrary();
+    })
+
+
 }
 
 function saveToLocal(paletteObj) {
@@ -303,6 +311,7 @@ function getLocal() {
     } else {
         const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
         paletteObjects.forEach(paletteObj => {
+
             // generate palette for library
             const palette = document.createElement("div");
             palette.classList.add("custom-palette");
@@ -316,8 +325,7 @@ function getLocal() {
                 preview.appendChild(smallDiv);
             });
 
-
-            // choose selected area btn
+            //select palette btn
             const selectBtn = document.createElement("div");
             selectBtn.classList.add("pick-palette-btn");
             selectBtn.classList.add(paletteObj.nr);
@@ -334,7 +342,15 @@ function getLocal() {
             deleteBtn.classList.add('fa-trash-alt');
             deleteBtn.appendChild(deleteIcon);
 
-            // attach events to the button
+            // append to library
+            palette.appendChild(title);
+            palette.appendChild(preview);
+            palette.appendChild(selectBtn);
+            palette.appendChild(deleteBtn);
+            const libraryPopup = document.querySelector('.library-popup')
+            libraryPopup.appendChild(palette);
+
+            // select button functionality
             selectBtn.addEventListener("click", e => {
                 closeLibrary();
                 const paletteIndex = e.target.classList[1];
@@ -350,13 +366,12 @@ function getLocal() {
                 });
                 resetInputs();
             });
-            // append to library
-            palette.appendChild(title);
-            palette.appendChild(preview);
-            palette.appendChild(selectBtn);
-            palette.appendChild(deleteBtn);
-            const libraryPopup = document.querySelector('.library-popup')
-            libraryPopup.appendChild(palette);
+
+            // delete button functionality
+            deleteBtn.addEventListener('click', e => {
+                closeLibrary();
+            })
+
         });
     }
 }
