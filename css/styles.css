@@ -575,7 +575,8 @@ input[type=range]::-ms-thumb {
           flex: 1;
 }
 
-.pick-palette-btn {
+.pick-palette-btn,
+.delete-palette-btn {
   margin-left: 1rem;
   height: 3rem;
   border: none;
@@ -587,7 +588,8 @@ input[type=range]::-ms-thumb {
   font-weight: bold;
 }
 
-.pick-palette-btn:hover {
+.pick-palette-btn:hover,
+.delete-palette-btn:hover {
   background: #1b1b1b;
 }
 /*# sourceMappingURL=styles.css.map */
