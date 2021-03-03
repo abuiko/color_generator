@@ -145,7 +145,6 @@ function randomColors() {
     });
 }
 
-
 // change bgcolor when change input color
 function hslControls(e) {
 
@@ -217,8 +216,6 @@ function savePalette() {
     currentHexes.forEach(hex => {
         colors.push(hex.innerText);
     });
-    console.log(colors);
-    console.log(name);
 
     // generate object
     let paletteNr = savedPalettes.length;
@@ -228,6 +225,7 @@ function savePalette() {
         nr: paletteNr
     };
     savedPalettes.push(paletteObj);
+
     // save to local storage
     saveToLocal(paletteObj);
     saveInput.value = "";
@@ -247,22 +245,24 @@ function savePalette() {
     const paletteBtn = document.createElement("div");
     paletteBtn.classList.add("pick-palette-btn");
     paletteBtn.classList.add(paletteObj.nr);
-
+    paletteBtn.innerText = 'Select';
 
     // attach events to the button
     paletteBtn.addEventListener("click", e => {
         closeLibrary();
         const paletteIndex = e.target.classList[1];
-        initialColors = [];
+        // initialColors = [];
         savedPalettes[paletteIndex].colors.forEach((color, index) => {
-            initialColors.push(color);
+            // initialColors.push(color);
+            const colorDivs = document.querySelectorAll('.color');
             colorDivs[index].style.backgroundColor = color;
             const text = colorDivs[index].children[0];
             checkTextContrast(color, text);
-            updateTextUI(index);
+            // updateTextUI(index);
         });
         resetInputs();
     });
+
     // append to library
     palette.appendChild(title);
     palette.appendChild(preview);
@@ -308,13 +308,15 @@ function getLocal() {
             paletteBtn.addEventListener("click", e => {
                 closeLibrary();
                 const paletteIndex = e.target.classList[1];
-                initialColors = [];
+
+                // initialColors = [];
                 paletteObjects[paletteIndex].colors.forEach((color, index) => {
-                    initialColors.push(color);
+                    // initialColors.push(color);
+                    const colorDivs = document.querySelectorAll('.color');
                     colorDivs[index].style.backgroundColor = color;
                     const text = colorDivs[index].children[0];
                     checkTextContrast(color, text);
-                    updateTextUI(index);
+                    // updateTextUI(index);
                 });
                 resetInputs();
             });
@@ -327,6 +329,19 @@ function getLocal() {
         });
     }
 }
+
+// function resetInputs() {
+//     const colorDivs = document.querySelectorAll('.color');
+//     colorDivs.forEach((div, i) => {
+//         const color = initialColors[i],
+//             hueValue = chroma(color).hsl()[0],
+//             satValue = chroma(color).hsl()[1],
+//             brightValue = chroma(color).hsl()[2];
+//         sliders[0 + 3 * i].value = Math.floor(hueValue);
+//         sliders[1 + 3 * i].value = Math.floor(brightValue * 100) / 100;
+//         sliders[2 + 3 * i].value = Math.floor(satValue * 100) / 100;
+//     });
+// }
 
 getLocal();
 
@@ -347,15 +362,4 @@ randomColors();
 //     for (icon of icons) {
 //       checkTextContrast(color, icon);
 //     }
-//   }
-//   function resetInputs() {
-//     colorDivs.forEach((div, i) => {
-//       const color = initialColors[i],
-//         hueValue = chroma(color).hsl()[0],
-//         satValue = chroma(color).hsl()[1],
-//         brightValue = chroma(color).hsl()[2];
-//       sliders[0 + 3 * i].value = Math.floor(hueValue);
-//       sliders[1 + 3 * i].value = Math.floor(brightValue * 100) / 100;
-//       sliders[2 + 3 * i].value = Math.floor(satValue * 100) / 100;
-//     });
 //   }
