@@ -232,6 +232,8 @@ function savePalette() {
 
     createPalette(paletteObj, paletteObj.name, paletteObj.number);
 
+
+
     // // select button functionality
     // selectBtn.addEventListener("click", e => {
     //     closeLibrary();
@@ -245,7 +247,7 @@ function savePalette() {
     //         checkTextContrast(color, text);
     //         // updateTextUI(index);
     //     });
-    //     resetInputs();
+    //     // resetInputs();
     // });
 
     // // delete button functionality
@@ -307,6 +309,33 @@ function createPalette(obj, paletteName, number) {
     palette.appendChild(deleteBtn);
     const libraryPopup = document.querySelector('.library-popup');
     libraryPopup.appendChild(palette);
+
+    selectColors(selectBtn);
+    deleteColors(deleteBtn);
+}
+
+function selectColors(button) {
+    button.addEventListener("click", e => {
+        closeLibrary();
+        // const paletteIndex = e.target.classList[1];
+
+        // // initialColors = [];
+        // savedPalettes[paletteIndex].colors.forEach((color, index) => {
+        //     // initialColors.push(color);
+        //     const colorDivs = document.querySelectorAll('.color');
+        //     colorDivs[index].style.backgroundColor = color;
+        //     const text = colorDivs[index].children[0];
+        //     checkTextContrast(color, text);
+        //     // updateTextUI(index);
+        // });
+        // resetInputs();
+    });
+}
+
+function deleteColors(button) {
+    button.addEventListener('click', e => {
+        closeLibrary();
+    })
 }
 
 
@@ -317,22 +346,24 @@ function getLocal() {
         const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
         paletteObjects.forEach(paletteObj => {
             createPalette(paletteObj, paletteObj.name, paletteObj.number);
-            //     // select button functionality
-            //     selectBtn.addEventListener("click", e => {
-            //         closeLibrary();
-            //         const paletteIndex = e.target.classList[1];
 
-            //         // initialColors = [];
-            //         paletteObjects[paletteIndex].colors.forEach((color, index) => {
-            //             // initialColors.push(color);
-            //             const colorDivs = document.querySelectorAll('.color');
-            //             colorDivs[index].style.backgroundColor = color;
-            //             const text = colorDivs[index].children[0];
-            //             checkTextContrast(color, text);
-            //             // updateTextUI(index);
-            //         });
-            //         resetInputs();
+
+            // // select button functionality
+            // selectBtn.addEventListener("click", e => {
+            //     closeLibrary();
+            //     const paletteIndex = e.target.classList[1];
+
+            //     // initialColors = [];
+            //     paletteObjects[paletteIndex].colors.forEach((color, index) => {
+            //         // initialColors.push(color);
+            //         const colorDivs = document.querySelectorAll('.color');
+            //         colorDivs[index].style.backgroundColor = color;
+            //         const text = colorDivs[index].children[0];
+            //         checkTextContrast(color, text);
+            //         // updateTextUI(index);
             //     });
+            //     // resetInputs();
+            // });
 
             //     // delete button functionality
             //     deleteBtn.addEventListener('click', e => {
