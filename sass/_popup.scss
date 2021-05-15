@@ -39,6 +39,7 @@
         background: #363636;
 
 
+
         h3 {
             font-size: 1.3rem;
             color: white;
@@ -120,6 +121,7 @@
     justify-content: flex-start;
     overflow-y: scroll;
     max-height: 60vh;
+    border-radius: 20px;
 }
 
 .close-library {
@@ -145,12 +147,12 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
 
     h4 {
         flex: 0.8;
         text-align: start;
-        margin-left: 3rem;
+        margin-left: 1rem;
         color: #fff;
     }
 }
@@ -168,8 +170,9 @@
 .pick-palette-btn,
 .delete-palette-btn {
 
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     height: 3rem;
+    width: 3rem;
     border: none;
     padding: 1rem;
     cursor: pointer;
@@ -177,8 +180,20 @@
     color: #FFF;
     background: rgb(77, 77, 77);
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 
     &:hover {
         background: rgb(27, 27, 27);
     }
+}
+
+.pick-palette-btn {
+    color: rgb(127, 219, 131);
+}
+
+.delete-palette-btn {
+    color: rgb(218, 107, 107);
 }

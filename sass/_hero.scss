@@ -1,5 +1,5 @@
 .colors {
-  min-height: 80vh;
+  min-height: 85vh;
 
   @include breakpoint-down(medium) {
     display: flex;
@@ -38,11 +38,16 @@
 
   }
 
+  i {
+    font-size: 1.2rem;
+  }
+
   .lock {
     margin-bottom: 2rem;
 
     @include breakpoint-down(medium) {
       margin: 2rem;
+      // font-size: 10rem;
     }
 
     @include breakpoint-down(small) {
@@ -202,7 +207,7 @@ input[type=range]::-ms-thumb {
 
 .panels {
   background: $darkGrey;
-  min-height: 20vh;
+  min-height: 15vh;
   text-align: center;
 
   @include breakpoint-down(medium) {
