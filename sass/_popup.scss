@@ -122,6 +122,10 @@
     overflow-y: scroll;
     max-height: 60vh;
     border-radius: 20px;
+
+    @include breakpoint-down(small) {
+        min-width: 90%;
+    }
 }
 
 .close-library {
@@ -154,6 +158,10 @@
         text-align: start;
         margin-left: 1rem;
         color: #fff;
+
+        @include breakpoint-down(small) {
+            display: none;
+        }
     }
 }
 
@@ -164,6 +172,12 @@
     div {
         height: 3rem;
         flex: 1;
+
+        @include breakpoint-down(small) {
+
+            height: 2.2rem;
+
+        }
     }
 }
 
@@ -183,6 +197,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include breakpoint-down(small) {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.8rem;
+    }
 
 
     &:hover {
